@@ -1,0 +1,59 @@
+#
+//  .swiftlint.yml
+//  PhotoGalleryApp
+//
+//  Created by Aleksandr Shchukin on 12/05/25.
+//
+
+included:
+  - WeatherApp
+
+excluded:
+  - Pods
+  - Carthage
+  - DerivedData
+
+disabled_rules:
+  - force_cast
+  - force_unwrapping
+  - line_length
+  - identifier_name
+
+opt_in_rules:
+  - empty_count
+  - closure_spacing
+  - vertical_whitespace_closing_braces
+  
+  - vertical_whitespace
+  - vertical_whitespace_before_return
+  - vertical_whitespace_between_marks
+
+line_length: 120
+indentation:
+  indentation_width: 4
+  include_comments: true
+
+type_body_length:
+  warning: 300
+  error: 500
+
+function_body_length:
+  warning: 40
+  error: 80
+
+identifier_name:
+  min_length:
+    warning: 3
+    error: 2
+  excluded:
+    - id
+    - x
+    - y
+    - vc
+
+trailing_whitespace:
+  ignores_empty_lines: true
+
+vertical_whitespace_between_marks:
+  warning: 1
+  error: 0

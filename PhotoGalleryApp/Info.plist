@@ -21,5 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Это приложение использует вашу фотогалерею для отображения изображений</string>
 </dict>
 </plist>

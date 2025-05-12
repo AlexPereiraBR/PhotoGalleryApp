@@ -68,6 +68,7 @@
 				D7E94A4C2DD0EEFA009447B5 /* Sources */,
 				D7E94A4D2DD0EEFA009447B5 /* Frameworks */,
 				D7E94A4E2DD0EEFA009447B5 /* Resources */,
+				D7E94AA82DD2704B009447B5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -126,6 +127,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D7E94AA82DD2704B009447B5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"⚠️ SwiftLint не установлен. Установи его с помощью 'brew install swiftlint'\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D7E94A4C2DD0EEFA009447B5 /* Sources */ = {
