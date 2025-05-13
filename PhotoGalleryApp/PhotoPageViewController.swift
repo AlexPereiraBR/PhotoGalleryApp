@@ -35,6 +35,7 @@ class PhotoPageViewController: UIViewController, UICollectionViewDataSource, UIC
         layout.itemSize = UIScreen.main.bounds.size
         
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         collectionView.delegate = self

@@ -40,10 +40,11 @@ class ViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .white
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
         view.addSubview(collectionView)
-        collectionView.frame = view.bounds
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.frame = UIScreen.main.bounds
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let spacing: CGFloat = 2
@@ -107,6 +108,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photoPageViewController = PhotoPageViewController()
+        photoPageViewController.modalPresentationStyle = .fullScreen
         photoPageViewController.assets = assets
         photoPageViewController.startingIndex = indexPath.item
         present(photoPageViewController, animated: true)
