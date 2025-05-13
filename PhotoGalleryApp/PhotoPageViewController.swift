@@ -10,15 +10,25 @@ import Photos
 
 class PhotoPageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // MARK: - Properties
+    
     var assets: [PHAsset] = []
     var startingIndex: Int = 0
     
     private var collectionView: UICollectionView!
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        configureCollectionView()
         
+    }
+    
+    // MARK: - UI Setup
+    
+    private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
@@ -35,10 +45,14 @@ class PhotoPageViewController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.scrollToItem(at: IndexPath(item: startingIndex, section: 0), at: .centeredHorizontally, animated: false)
     }
     
+    // MARK: - UICollectionViewDataSource
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return assets.count
     }
+    
+    // MARK: - UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoPageCell", for: indexPath) as? PhotoPageCell else {
@@ -60,5 +74,3 @@ class PhotoPageViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
 }
-
-
