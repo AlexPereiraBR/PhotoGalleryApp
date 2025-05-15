@@ -10,6 +10,8 @@ import Photos
 
 class PhotoLibraryManager {
     
+    // MARK: - Public Methods
+    
     func requestAccessAndFetch(completion: @escaping (_ granted: Bool, _ assets: [PHAsset]) -> Void) {
         PHPhotoLibrary.requestAuthorization { status in
         switch status {
@@ -21,6 +23,8 @@ class PhotoLibraryManager {
         }
     }
 }
+    
+    // MARK: - Private Methods
     
     private func fetchAssets() -> [PHAsset] {
         var fetchedAssets: [PHAsset] = []

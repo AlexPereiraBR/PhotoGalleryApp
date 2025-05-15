@@ -31,9 +31,9 @@ class ViewController: UIViewController {
                 self?.showPermissionAlert()
             }
             
-        }
-        }
-    }
+          }
+     }
+  }
     
     // MARK: - UI Setup
     
@@ -43,7 +43,8 @@ class ViewController: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
         view.addSubview(collectionView)
-        collectionView.frame = view.bounds
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.frame = UIScreen.main.bounds
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let spacing: CGFloat = 2
@@ -79,25 +80,6 @@ class ViewController: UIViewController {
         present(alert, animated: true)
         
     }
-    
-// MARK: - UICollectionViewDataSource
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let asset = assets[indexPath.item]
-        let manager = PHImageManager.default()
-        let targetSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
-        
-        manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: nil) { image, _ in
-            guard let image = image else
-            
-            { return }
-            
-            let detailViewController = PhotoDetailViewController()
-            detailViewController.image = image
-            self.present(detailViewController, animated: true)
-        }
-    }
-    
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -120,5 +102,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         }
         
         return cell
+    }
+    
+    // MARK: - UICollectionViewDelegate
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photoPageViewController = PhotoPageViewController()
+        photoPageViewController.modalPresentationStyle = .fullScreen
+        photoPageViewController.assets = assets
+        photoPageViewController.startingIndex = indexPath.item
+        present(photoPageViewController, animated: true)
+        
     }
 }

@@ -10,11 +10,20 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     // MARK: - UI Components
+    
     let imageView = UIImageView()
     
     // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        configureImageView()
+    }
+        
+    // MARK: - UI Setup
+    
+    private func configureImageView() {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         contentView.addSubview(imageView)
@@ -29,6 +38,7 @@ class PhotoCell: UICollectionViewCell {
     }
     
     // MARK: - Not Implemented
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
